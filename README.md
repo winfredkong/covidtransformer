@@ -11,6 +11,7 @@ This project is primarily motivated by [[1]](#1) and uses Spatial embedding (Cou
 ## Dataset
 
 We scraped public data from https://github.com/owid/covid-19-data and https://covid19.who.int/data, and took the intersection of countries which had data in all 3 variables (cases, vacc, deaths). Data was extracted around August 2022. 
+https://www.kaggle.com/datasets/tanuprabhu/population-by-country-2020?resource=download
 
 ## Model Architecture
 
@@ -22,10 +23,10 @@ We took the dimension of the model to be `d_model=512`. Our Spatial (which count
 
 ![Simplified Embedding Architecture](images/embedding_architecture.png?raw=True)
 
-For optimisation, we first ran our model with MSE loss, but noted that there was huge variation in losses (between batches). We hypothesized that this was due to different population sizes and since MSE loss scaled quadratically with this loss, this resulted in large loss for large populations and small loss for small populations. This could result in overfitting for large countries. As such we decided to run another model with loss $\frac{(tgt-output)^2}{tgt^2}$.
+For optimisation, we first ran our model with MSE loss, but noted that there was huge variation in losses (between batches). We hypothesized that this was due to different population sizes and since MSE loss scaled quadratically with this loss, this resulted in large loss for large populations and small loss for small populations. This could result in overfitting for large countries. 
 
 ## Results
-
+After training for approximately 50 epochs, we achieved a validation loss of 6368.7090 (RMSE of about 80), and a test loss of 2908.0791 (RMSE of about 40). 
 
 
 
