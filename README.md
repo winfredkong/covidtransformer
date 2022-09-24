@@ -14,9 +14,18 @@ We scraped public data from https://github.com/owid/covid-19-data and https://co
 
 ## Model Architecture
 
-For our model, we take the `past=14` days of data (in all 3 variables) and seek to `pred=3` days of data in deaths.
+For our model, we take the `past=14` days of data (in all 3 variables) and seek to `pred=3` days of data in deaths. A simplified diagram of the model architecture can be seen below with `N=1` layers.
 
-![Simplified Model Architecture](https://github.com/winfredkong/covidtransformer/tree/main/images/model_architecture.png)
+![Simplified Model Architecture](images/model_architecture.png?raw=True)
+
+We took the dimension of the model to be `d_model=512`. Our Spatial (which country) and Variable (which variable) embedding we both output into `d_model-1` dimensions which was then stacked with the actual value (of cases/vacc/death) to give `d_model`. Finally we used the standard sinusoidal relative positional encoding and added it to the result. The motivation behind stacking the Spatial and Variable embedding is because the standard sinusoidal relative positional encoding makes small variations in each dimension, which does not overshadow differences in values, whereas we should have no such expectations for our Spatial and Variable embeddings. A simplified diagram of `d_model=4` can be seen below. 
+
+![Simplified Embedding Architecture](images/embedding_architecture.png?raw=True)
+
+For optimisation, we first ran our model with MSE loss, but noted that there was huge variation in losses (between batches). We hypothesized that this was due to different population sizes and since MSE loss scaled quadratically with this loss, this resulted in large loss for large populations and small loss for small populations. This could result in overfitting for large countries. As such we decided to run another model with loss $\frac{(tgt-output)^2}{tgt^2}$.
+
+## Results
+
 
 
 
