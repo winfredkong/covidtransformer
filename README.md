@@ -10,7 +10,13 @@ This project is primarily motivated by [[1]](#1) and uses Spatial embedding (Cou
 
 ## Dataset
 
-We scraped public data from https://github.com/owid/covid-19-data and https://covid19.who.int/data, and took the intersection of countries which had data in all 3 variables (cases, vacc, deaths). 
+We scraped public data from https://github.com/owid/covid-19-data and https://covid19.who.int/data, and took the intersection of countries which had data in all 3 variables (cases, vacc, deaths). Data was extracted around August 2022. 
+
+## Model Architecture
+
+For our model, we take the `past=14` days of data (in all 3 variables) and seek to `pred=3` days of data in deaths.
+
+
 
 
 
