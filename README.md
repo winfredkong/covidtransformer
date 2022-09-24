@@ -16,7 +16,7 @@ We scraped public data from https://github.com/owid/covid-19-data and https://co
 
 For our model, we take the `past=14` days of data (in all 3 variables) and seek to `pred=3` days of data in deaths.
 
-
+![Simplified Model Architecture](https://github.com/winfredkong/covidtransformer/tree/main/images/model_architecture.png)
 
 
 
