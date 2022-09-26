@@ -1,2 +1,5 @@
+version https://git-lfs.github.com/spec/v1
+oid sha256:8083b671b83fa91f058c3853b9d86bdb98ba7e9664359842919b3f763f6de99d
+size 175
 norm_covid_model_latest.pt filter=lfs diff=lfs merge=lfs -text
 covid_model_latest.pt filter=lfs diff=lfs merge=lfs -text
