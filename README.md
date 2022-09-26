@@ -31,9 +31,17 @@ For optimisation, we first ran our model with MSE loss, but noted that there was
 Thus, we ran a second model with all data divided by country population.
 
 ## Results
-After training for approximately 50 epochs, we achieved a validation loss of 6368.7090 (RMSE of about 80), and a test loss of 2908.0791 (RMSE of about 40). 
+After training for approximately 50 epochs, we achieved a validation loss of 6368.7090 (RMSE of about 80), and a test loss of 2908.0791 (RMSE of about 40). For the model trained on normalised data, we achieved a validation loss of 7.82e-7 (RMSE of about 8.84e-4) and a test loss of 7.81e-7 (RMSE of about 8.83e-4).
 
+As explained earlier our first model likely performs better on countries with larger populations, while our second model is a more stable general model. 
 
+## Further extensions
+
+It is to be noted that in [[1]](#1), they implemented a time2vec embedding which allows for capturing of seasonal data in predicting weather. While we did not implement this, it could be something worth implementing due to differences in temperatures/seasons changing the spread of disease. 
+
+## Credit
+
+This project was made possible by the many online references and tutorials like https://nlp.seas.harvard.edu/annotated-transformer/ as well as the freely available GPUs provided by Google Colab.
 
 ## References
 <a id="1">[1]</a> 
