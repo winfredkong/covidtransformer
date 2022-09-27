@@ -1,4 +1,4 @@
-# Covid Transformer Model
+# Autoregressive Transformer Model to predict future COVID-19 deaths 
 
 ## Introduction
 
